@@ -19,7 +19,7 @@
     <property name="app.id" value="colorful-circles" />    <!-- 実行可能 Jar ファイルの名前（の一部） -->
     <property name="app.name" value="ColorfulCircles" />
     <property name="app.version" value="1.0" />
-    <property name="app.main-class" value="sample.Main" />    <!-- メインクラス -->
+    <property name="app.main-class" value="com.jellyfish85.sqlstat.Main" />    <!-- メインクラス -->
 
     <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
              uri="javafx:com.sun.javafx.tools.ant"
