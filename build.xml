@@ -1,0 +1,40 @@
+<project name="JavaFXProject" basedir="." xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <property name="javafx.tools.ant.jar" value="lib/ant-javafx.jar" />
+
+    <property name="dest" location="build/classes" />
+    <property name="src"  location="src/main/java" />
+    <target name="clean">
+        <delete dir="build" />
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="${dest}" />
+        <javac srcdir="${src}" destdir="${dest}" classpath="lib/jfxrt.jar" />
+    </target>
+
+    <property name="jardest" location="build/libs" />    <!-- 実行可能 Jar ファイルが作成されるフォルダ -->
+
+    <!-- アプリケーションの設定 -->
+    <property name="app.vendor" value="org.waman" />
+    <property name="app.id" value="colorful-circles" />    <!-- 実行可能 Jar ファイルの名前（の一部） -->
+    <property name="app.name" value="ColorfulCircles" />
+    <property name="app.version" value="1.0" />
+    <property name="app.main-class" value="sample.Main" />    <!-- メインクラス -->
+
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+             uri="javafx:com.sun.javafx.tools.ant"
+             classpath="${javafx.tools.ant.jar}"/>
+
+    <fx:application id="app-info"
+                    name="${app.name}"
+                    mainClass="${app.main-class}" />
+    <fx:jar destfile="${jardest}/${app.id}-${app.version}.jar">
+        <fx:application refid="app-info"/>
+        <manifest>
+            <attribute name="Implementation-Vendor" value="${app.vendor}"/>
+            <attribute name="Implementation-Title" value="${app.name}"/>
+            <attribute name="Implementation-Version" value="${app.version}"/>
+        </manifest>
+        <fileset dir="${dest}"/>
+    </fx:jar>
+</project>
